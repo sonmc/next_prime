@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { classNames } from 'primereact/utils';
 import React, { forwardRef, useContext, useImperativeHandle, useRef } from 'react';
-import { AppTopbarRef } from '@/types';
 import { LayoutContext } from './context/layoutcontext';
 
-const AppTopbar = forwardRef<AppTopbarRef>((props, ref) => {
+const AppTopbar = forwardRef<any>((props, ref) => {
     const { layoutConfig, layoutState, onMenuToggle, showProfileSidebar } = useContext(LayoutContext);
     const menubuttonRef = useRef(null);
     const topbarmenuRef = useRef(null);

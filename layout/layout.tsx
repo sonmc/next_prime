@@ -5,15 +5,13 @@ import { classNames } from 'primereact/utils';
 import AppFooter from './AppFooter';
 import AppSidebar from './AppSidebar';
 import AppTopbar from './AppTopbar';
-import AppConfig from './AppConfig';
 import { LayoutContext } from './context/layoutcontext';
-import { ChildContainerProps, LayoutState, AppTopbarRef } from '@/types';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-const Layout = ({ children }: ChildContainerProps) => {
+const Layout = ({ children }: any) => {
     const { layoutConfig, layoutState, setLayoutState } = useContext(LayoutContext);
 
-    const topbarRef = useRef<AppTopbarRef>(null);
+    const topbarRef = useRef<any>(null);
     const sidebarRef = useRef<HTMLDivElement>(null);
     const [bindMenuOutsideClickListener, unbindMenuOutsideClickListener] = useEventListener({
         type: 'click',
@@ -55,7 +53,7 @@ const Layout = ({ children }: ChildContainerProps) => {
     });
 
     const hideMenu = () => {
-        setLayoutState((prevLayoutState: LayoutState) => ({
+        setLayoutState((prevLayoutState: any) => ({
             ...prevLayoutState,
             overlayMenuActive: false,
             staticMenuMobileActive: false,
@@ -66,7 +64,7 @@ const Layout = ({ children }: ChildContainerProps) => {
     };
 
     const hideProfileMenu = () => {
-        setLayoutState((prevLayoutState: LayoutState) => ({
+        setLayoutState((prevLayoutState: any) => ({
             ...prevLayoutState,
             profileSidebarVisible: false
         }));
@@ -128,7 +126,6 @@ const Layout = ({ children }: ChildContainerProps) => {
                 <div className="layout-main">{children}</div>
                 <AppFooter />
             </div>
-            <AppConfig />
             <div className="layout-mask"></div>
         </div>
     );

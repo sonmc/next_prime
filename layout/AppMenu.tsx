@@ -2,10 +2,9 @@ import React from 'react';
 import AppMenuitem from './AppMenuitem';
 import { MenuProvider } from './context/menucontext';
 
-import { AppMenuItem } from '@/types';
 
 const AppMenu = () => {
-    const model: AppMenuItem[] = [
+    const model: any[] = [
         {
             label: 'Home',
             items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' }]

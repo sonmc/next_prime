@@ -9,7 +9,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ProductService } from '../../service/ProductService';
 import { LayoutContext } from '../../layout/context/layoutcontext';
 import Link from 'next/link';
-import { Demo } from '@/types';
 import { ChartData, ChartOptions } from 'chart.js';
 
 const lineData: ChartData = {
@@ -35,7 +34,7 @@ const lineData: ChartData = {
 };
 
 const Dashboard = () => {
-    const [products, setProducts] = useState<Demo.Product[]>([]);
+    const [products, setProducts] = useState<any[]>([]);
     const menu1 = useRef<Menu>(null);
     const menu2 = useRef<Menu>(null);
     const [lineOptions, setLineOptions] = useState<ChartOptions>({});

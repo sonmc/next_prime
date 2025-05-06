@@ -14,10 +14,10 @@ import { Toolbar } from 'primereact/toolbar';
 import { classNames } from 'primereact/utils';
 import React, { useEffect, useRef, useState } from 'react';
 import { ProductService } from '../../../../service/ProductService';
-import { Demo } from '@/types';
+
 
 const Crud = () => {
-    let emptyProduct: Demo.Product = {
+    let emptyProduct: any = {
         id: '',
         name: '',
         image: '',
@@ -33,7 +33,7 @@ const Crud = () => {
     const [productDialog, setProductDialog] = useState(false);
     const [deleteProductDialog, setDeleteProductDialog] = useState(false);
     const [deleteProductsDialog, setDeleteProductsDialog] = useState(false);
-    const [product, setProduct] = useState<Demo.Product>(emptyProduct);
+    const [product, setProduct] = useState<any>(emptyProduct);
     const [selectedProducts, setSelectedProducts] = useState(null);
     const [submitted, setSubmitted] = useState(false);
     const [globalFilter, setGlobalFilter] = useState('');
@@ -104,12 +104,12 @@ const Crud = () => {
         }
     };
 
-    const editProduct = (product: Demo.Product) => {
+    const editProduct = (product: any) => {
         setProduct({ ...product });
         setProductDialog(true);
     };
 
-    const confirmDeleteProduct = (product: Demo.Product) => {
+    const confirmDeleteProduct = (product: any) => {
         setProduct(product);
         setDeleteProductDialog(true);
     };
@@ -209,7 +209,7 @@ const Crud = () => {
         );
     };
 
-    const codeBodyTemplate = (rowData: Demo.Product) => {
+    const codeBodyTemplate = (rowData: any) => {
         return (
             <>
                 <span className="p-column-title">Code</span>
@@ -218,7 +218,7 @@ const Crud = () => {
         );
     };
 
-    const nameBodyTemplate = (rowData: Demo.Product) => {
+    const nameBodyTemplate = (rowData: any) => {
         return (
             <>
                 <span className="p-column-title">Name</span>
@@ -227,7 +227,7 @@ const Crud = () => {
         );
     };
 
-    const imageBodyTemplate = (rowData: Demo.Product) => {
+    const imageBodyTemplate = (rowData: any) => {
         return (
             <>
                 <span className="p-column-title">Image</span>
@@ -236,7 +236,7 @@ const Crud = () => {
         );
     };
 
-    const priceBodyTemplate = (rowData: Demo.Product) => {
+    const priceBodyTemplate = (rowData: any) => {
         return (
             <>
                 <span className="p-column-title">Price</span>
@@ -245,7 +245,7 @@ const Crud = () => {
         );
     };
 
-    const categoryBodyTemplate = (rowData: Demo.Product) => {
+    const categoryBodyTemplate = (rowData: any) => {
         return (
             <>
                 <span className="p-column-title">Category</span>
@@ -254,7 +254,7 @@ const Crud = () => {
         );
     };
 
-    const ratingBodyTemplate = (rowData: Demo.Product) => {
+    const ratingBodyTemplate = (rowData: any) => {
         return (
             <>
                 <span className="p-column-title">Reviews</span>
@@ -263,7 +263,7 @@ const Crud = () => {
         );
     };
 
-    const statusBodyTemplate = (rowData: Demo.Product) => {
+    const statusBodyTemplate = (rowData: any) => {
         return (
             <>
                 <span className="p-column-title">Status</span>
@@ -272,7 +272,7 @@ const Crud = () => {
         );
     };
 
-    const actionBodyTemplate = (rowData: Demo.Product) => {
+    const actionBodyTemplate = (rowData: any) => {
         return (
             <>
                 <Button icon="pi pi-pencil" rounded severity="success" className="mr-2" onClick={() => editProduct(rowData)} />
