@@ -2,13 +2,14 @@ import Link from 'next/link';
 import { classNames } from 'primereact/utils';
 import React, { forwardRef, useContext, useImperativeHandle, useRef } from 'react';
 import { LayoutContext } from './context/layoutcontext';
+import { Menu } from 'primereact/menu';
 
 const AppTopbar = forwardRef<any>((props, ref) => {
     const { layoutConfig, layoutState, onMenuToggle, showProfileSidebar } = useContext(LayoutContext);
     const menubuttonRef = useRef(null);
     const topbarmenuRef = useRef(null);
     const topbarmenubuttonRef = useRef(null);
-
+    const menu2 = useRef<Menu>(null);
     useImperativeHandle(ref, () => ({
         menubutton: menubuttonRef.current,
         topbarmenu: topbarmenuRef.current,
@@ -26,15 +27,19 @@ const AppTopbar = forwardRef<any>((props, ref) => {
                 <i className="pi pi-bars" />
             </button>
 
-            <button ref={topbarmenubuttonRef} type="button" className="p-link layout-topbar-menu-button layout-topbar-button" onClick={showProfileSidebar}>
-                <i className="pi pi-ellipsis-v" />
-            </button>
-
-            <div ref={topbarmenuRef} className={classNames('layout-topbar-menu', { 'layout-topbar-menu-mobile-active': layoutState.profileSidebarVisible })}>
-                <button type="button" className="p-link layout-topbar-button">
+            <div className="layout-topbar-right">
+                <button type="button" className="p-link layout-topbar-button" onClick={(event) => menu2.current?.toggle(event)}>
                     <i className="pi pi-user"></i>
-                    <span>Profile</span>
                 </button>
+
+                <Menu
+                    ref={menu2}
+                    popup
+                    model={[
+                        { label: 'Profile', icon: 'pi pi-fw pi-user' },
+                        { label: 'Logout', icon: 'pi pi-fw pi-key' }
+                    ]}
+                />
             </div>
         </div>
     );
