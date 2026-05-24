@@ -1,0 +1,10 @@
+services:
+  client-site:
+    platform: linux/amd64
+    image: ${CLIENT_SITE_IMAGE:-next-client-site:local}
+    build:
+      context: ../client-side
+      dockerfile: ../docker/Dockerfile.client-site
+    ports:
+      - "${CLIENT_SITE_PORT:-3000}:80"
+    restart: unless-stopped
